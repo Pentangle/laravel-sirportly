@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Pentangle\LaravelSirportly\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class LaravelSirportlyCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-sirportly';
 
     public $description = 'My command';
 
