@@ -2,9 +2,9 @@
 
 namespace Pentangle\LaravelSirportly;
 
+use Pentangle\LaravelSirportly\Commands\LaravelSirportlyCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Pentangle\LaravelSirportly\Commands\LaravelSirportlyCommand;
 
 class LaravelSirportlyServiceProvider extends PackageServiceProvider
 {

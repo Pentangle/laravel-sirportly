@@ -21,7 +21,7 @@ trait Attachments
     {
         return $this->query('/api/v2/tickets/attachment', queryParams: [
             'ticket' => $ticket,
-            'attachment' => $attachment
+            'attachment' => $attachment,
         ]);
     }
 }

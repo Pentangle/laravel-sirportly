@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Facade;
  */
 class LaravelSirportly extends Facade
 {
-    protected static function getFacadeAccessor():string
+    protected static function getFacadeAccessor(): string
     {
         return \Pentangle\LaravelSirportly\LaravelSirportly::class;
     }

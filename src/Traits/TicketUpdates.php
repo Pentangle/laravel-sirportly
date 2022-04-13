@@ -100,5 +100,4 @@ trait TicketUpdates
     {
         return $this->query('/api/v2/ticket_updates/unpin', compact('ticket', 'update'));
     }
-
 }

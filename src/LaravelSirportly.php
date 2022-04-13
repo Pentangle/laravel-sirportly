@@ -2,10 +2,10 @@
 
 namespace Pentangle\LaravelSirportly;
 
-use Pentangle\LaravelSirportly\Traits\Attachments;
-use Pentangle\LaravelSirportly\Traits\TicketUpdates;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use Pentangle\LaravelSirportly\Traits\Attachments;
+use Pentangle\LaravelSirportly\Traits\TicketUpdates;
 
 class LaravelSirportly
 {
@@ -33,7 +33,7 @@ class LaravelSirportly
             $response = $client->get($this->url.$action, $queryParams);
         }
 
-        if (!$response->successful()) {
+        if (! $response->successful()) {
             $message = [];
             $message[] = "Error on Sirportly API endpoint";
             $message[] = "Connecting to: ".$this->url.$action;
@@ -46,6 +46,7 @@ class LaravelSirportly
             $message = implode("\r\n", $message);
             Log::error($message);
             Log::channel('teams')->error($message);
+
             return false;
         }
 
@@ -73,7 +74,7 @@ class LaravelSirportly
         );
     }
 
-    public function create_ticket($params = array())
+    public function create_ticket($params = [])
     {
         return $this->query(
             action: '/api/v1/tickets/submit',
@@ -81,7 +82,7 @@ class LaravelSirportly
         );
     }
 
-    public function post_update($params = array())
+    public function post_update($params = [])
     {
         return $this->query(
             '/api/v1/tickets/post_update',
@@ -89,27 +90,33 @@ class LaravelSirportly
         );
     }
 
-    public function update_ticket($params = array())
+    public function update_ticket($params = [])
     {
-        return $this->query('/api/v1/tickets/update',
-            postdata: $params);
+        return $this->query(
+            '/api/v1/tickets/update',
+            postdata: $params
+        );
     }
 
-    public function run_macro($params = array())
+    public function run_macro($params = [])
     {
         return $this->query('/api/v1/tickets/macro', $params);
     }
 
-    public function add_follow_up($params = array())
+    public function add_follow_up($params = [])
     {
-        return $this->query('/api/v1/tickets/followup',
-            postdata: $params);
+        return $this->query(
+            '/api/v1/tickets/followup',
+            postdata: $params
+        );
     }
 
-    public function create_user($params = array())
+    public function create_user($params = [])
     {
-        return $this->query('/api/v1/users/create',
-            postdata: $params);
+        return $this->query(
+            '/api/v1/users/create',
+            postdata: $params
+        );
     }
 
     public function statuses()
@@ -152,7 +159,7 @@ class LaravelSirportly
         return $this->query('/api/v1/objects/filters');
     }
 
-    public function spql($params = array())
+    public function spql($params = [])
     {
         return $this->query('/api/v1/tickets/spql', $params);
     }
@@ -173,8 +180,10 @@ class LaravelSirportly
      */
     public function kb($kb_id)
     {
-        return $this->query('/api/v1/knowledge/tree',
-            queryParams: array('kb' => $kb_id));
+        return $this->query(
+            '/api/v1/knowledge/tree',
+            queryParams: ['kb' => $kb_id]
+        );
     }
 
     /**
@@ -183,7 +192,8 @@ class LaravelSirportly
      */
     public function users($page = 1)
     {
-        return $this->query('/api/v2/users/all',
+        return $this->query(
+            '/api/v2/users/all',
             queryParams: compact('page')
         );
     }
@@ -194,7 +204,9 @@ class LaravelSirportly
      */
     public function contacts($page = 1)
     {
-        return $this->query('/api/v2/contacts/all',
-            queryParams: compact('page'));
+        return $this->query(
+            '/api/v2/contacts/all',
+            queryParams: compact('page')
+        );
     }
 }
