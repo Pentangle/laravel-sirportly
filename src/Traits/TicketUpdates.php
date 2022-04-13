@@ -22,7 +22,7 @@ trait TicketUpdates
      */
     public function ticketUpdates($ticket)
     {
-        return $this->query('ticket_updates/all', compact('ticket'));
+        return $this->query('/api/v2/ticket_updates/all', compact('ticket'));
     }
 
     /**
@@ -39,7 +39,7 @@ trait TicketUpdates
      */
     public function ticketUpdateInfo(string $ticket, int $update)
     {
-        return $this->query('ticket_updates/info', compact('ticket', 'update'));
+        return $this->query('/api/v2/ticket_updates/info', compact('ticket', 'update'));
     }
 
     /**
@@ -62,7 +62,7 @@ trait TicketUpdates
      */
     public function ticketUpdateDestroy($ticket, $update, bool $privatise = false)
     {
-        return $this->query('ticket_updates/destroy', compact('ticket', 'update', 'privatise'));
+        return $this->query('/api/v2/ticket_updates/destroy', compact('ticket', 'update', 'privatise'));
     }
 
     /**
@@ -80,7 +80,7 @@ trait TicketUpdates
      */
     public function ticketUpdatePin(string $ticket, int $update)
     {
-        return $this->query('ticket_updates/pin', compact('ticket', 'update'));
+        return $this->query('/api/v2/ticket_updates/pin', compact('ticket', 'update'));
     }
 
     /**
@@ -98,7 +98,7 @@ trait TicketUpdates
      */
     public function ticketUpdateUnpin(string $ticket, int $update)
     {
-        return $this->query('ticket_updates/unpin', compact('ticket', 'update'));
+        return $this->query('/api/v2/ticket_updates/unpin', compact('ticket', 'update'));
     }
 
 }

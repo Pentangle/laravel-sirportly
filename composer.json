@@ -34,9 +34,11 @@
     },
     "autoload": {
         "psr-4": {
-            "Pentangle\\LaravelSirportly\\": "src",
-            "Pentangle\\LaravelSirportly\\Database\\Factories\\": "database/factories"
-        }
+            "Pentangle\\LaravelSirportly\\": "src"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

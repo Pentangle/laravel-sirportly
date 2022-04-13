@@ -2,7 +2,6 @@
 
 namespace Pentangle\LaravelSirportly;
 
-use Illuminate\Support\Facades\File;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Pentangle\LaravelSirportly\Commands\LaravelSirportlyCommand;
@@ -18,11 +17,10 @@ class LaravelSirportlyServiceProvider extends PackageServiceProvider
          */
         $package
             ->name('laravel-sirportly')
-            ->hasConfigFile()
-            ->hasViews()
-            ->hasCommands([
-                LaravelSirportlyCommand::class,
-            ]);
+            ->hasConfigFile();
+//            ->hasCommands([
+//                LaravelSirportlyCommand::class,
+//            ]);
     }
 
     public function packageRegistered(): void
@@ -33,8 +31,5 @@ class LaravelSirportlyServiceProvider extends PackageServiceProvider
                 secret: config('sirportly.secret'),
             );
         });
-
-        // load helpers
-        require_once __DIR__.'/helpers.php';
     }
 }
