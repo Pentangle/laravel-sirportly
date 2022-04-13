@@ -16,7 +16,7 @@ class LaravelSirportly
     {
     }
 
-    private function query($action, $postdata = [], $queryParams = [])
+    private function query($action, $postdata = [], $queryParams = [], $json = true)
     {
         // add Auth-Token and Auth-Secret to header
         $client = Http::withHeaders([
@@ -50,7 +50,11 @@ class LaravelSirportly
             return false;
         }
 
-        return $response->json();
+        if ($json) {
+            return $response->json();
+        } else {
+            return $response->body();
+        }
     }
 
     /**
